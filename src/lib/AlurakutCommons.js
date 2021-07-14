@@ -54,7 +54,6 @@ export function AlurakutMenu({ githubUser }) {
 }
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
-  background-color: #308BC5;
   .alurakutMenuProfileSidebar {
     background: white;
     position: fixed;
@@ -93,7 +92,6 @@ AlurakutMenu.Wrapper = styled.header`
     }
   }
   .container {
-    background-color: #308BC5;
     padding: 7px 16px;
     max-width: 1110px;
     margin: auto;
@@ -260,11 +258,11 @@ export function OrkutNostalgicIconSet(props) {
         </li>
       ))}
       {[
-        { name: 'Confiável', slug: 'confiavel', icon: 'smile' },
-        { name: 'Legal', slug: 'legal', icon: 'cool' },
-        { name: 'Sexy', slug: 'sexy', icon: 'heart' },
-      ].map(({ name, slug, icon }) => {
-        const total = props[slug] ? props[slug] : 2;
+        { name: 'Confiável', slug: 'confiavel', icon: 'smile', lvl: 3},
+        { name: 'Legal', slug: 'legal', icon: 'cool', lvl: 2},
+        { name: 'Sexy', slug: 'sexy', icon: 'heart', lvl: 3 },
+      ].map(({ name, slug, icon, lvl }) => {
+        const total = props[slug] ? props[slug] : lvl;
         return (
           <li key={`orkut__icon_set__${slug}`}>
             <span className="OrkutNostalgicIconSet__title">

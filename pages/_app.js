@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     box-sizing: border-box;
+    background-image: url("https://images5.alphacoders.com/109/1099191.jpg");
     background-color: #d9e6f6;
   }
   #_next {
