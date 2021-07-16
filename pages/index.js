@@ -35,7 +35,8 @@ export default function Home() {
     'peas',
     'rafaballerini',
     'marcobrunodev',
-    'felipefialho'
+    'felipefialho',
+    'Weslly31'
   ] 
   return (
   <>
@@ -56,12 +57,16 @@ export default function Home() {
           <form onSubmit={function handleCriaComunidade(e){
             e.preventDefault();
             const dadosDoForm = new FormData(e.target);
+
+            console.log('Campo: ', dadosDoForm.get('title'));
+            console.log('Campo: ', dadosDoForm.get('image'));
+
             const comunidade = {
               id: new Date().toISOString(),
               title: dadosDoForm.get('title'),
               image: dadosDoForm.get('image'),
             }
-            const comunidadesAtualizadas = [...comunidades, 'Alura Stars']
+            const comunidadesAtualizadas = [...comunidades, comunidade]
             setComunidade(comunidadesAtualizadas);
           }}>
             <div>
@@ -92,15 +97,17 @@ export default function Home() {
             Comunidades ({comunidades.length})
           </h2>
             <ul>
-              {comunidades.map((itemAtual) => {
-                return (
-                  <li key={itemAtual.id}>
-                    <a href={`/users/${itemAtual.title}`}>
-                        <img src={itemAtual.image} />
-                      <span>{itemAtual.title}</span>
-                    </a>
-                  </li>
-                )
+              {comunidades.map((itemAtual, index) => {
+                if (index <= 5) {
+                  return (
+                    <li key={itemAtual.id}>
+                      <a href={`/users/${itemAtual.title}`}>
+                          <img src={itemAtual.image} />
+                        <span>{itemAtual.title}</span>
+                      </a>
+                    </li>
+                  )
+                }
               })}
             </ul>
 
@@ -111,15 +118,17 @@ export default function Home() {
           </h2>
           
           <ul>
-            {pessoasFavoritas.map((itemAtual) => {
-              return (
-                <li key={itemAtual}>
-                <a href={`/users/${itemAtual}`}>
-                  <img src={`https://github.com/${itemAtual}.png`} />
-                  <span>{itemAtual}</span>
-                </a>
-              </li>
-              )
+            {pessoasFavoritas.map((itemAtual, index) => {
+              if (index <= 5) {
+                return (
+                  <li key={itemAtual}>
+                    <a href={`/users/${itemAtual}`}>
+                      <img src={`https://github.com/${itemAtual}.png`} />
+                      <span>{itemAtual}</span>
+                    </a>
+                  </li>
+                )
+              }
             })}
           </ul>
         </ProfileRelationsBoxWrapper>
